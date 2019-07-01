@@ -31,26 +31,3 @@ optionalValue, _ := conf.Get("OPTIONAL_VALUE")
 
 // ... 
 ```
-
-## CLI Usage
-
-The CLI allows you to import configuration from JSON to parameter store.  You will need a JSON file of configuration. E.G. 
-
-```JSON
-{
-    "config_key": "value",
-    "a_boolean_value": true,
-    "a_duration_value": "1m",
-    "complex_json": {
-        "more": "config",
-        "goes": "here"
-    }
-}
-```
-
-The above file would result in 4 keys being upserted into parameter store within the `environment/serviceName/` namespace.
-
-```bash
-# this command will load the config from example.json into the namespace for the local environment's example service
-aws-vault exec pbxx-dev -- make run env=local srv=example file=$(pwd)/example.json
-```
