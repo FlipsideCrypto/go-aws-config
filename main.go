@@ -1,12 +1,10 @@
-package main
+package awsconfig
 
 import (
 	"flag"
 	"io/ioutil"
 	"log"
 	"os"
-
-	"github.com/FlipsideCrypto/go-aws-config/src/awsconfig"
 )
 
 var filepath = flag.String("file", "", "the path to the json file")
@@ -37,7 +35,7 @@ func main() {
 		log.Fatalf("Error reading file %s : %v", *filepath, err)
 	}
 
-	loader := awsconfig.NewAWSLoader(*env, *serviceName)
+	loader := NewAWSLoader(*env, *serviceName)
 	if err != nil {
 		log.Fatalf("Error creating loader: %v", err)
 	}
